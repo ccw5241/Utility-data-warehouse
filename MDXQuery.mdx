@@ -1,0 +1,9 @@
+with 
+    member [Measures].[Total Paid] as
+    [Measures].[Amount Pay] + [Measures].[Amount Paid]
+    member [Measures].[Total Due] as
+    [Measures].[Amount Due] + [Measures].[Amount Due - Fact Water Bill]
+select
+    {[Measures].[Total Due],[Measures].[Total Paid]} on columns,
+	[Dim Resident].[Account Number].[Account Number] ON rows
+	from [Utility];
